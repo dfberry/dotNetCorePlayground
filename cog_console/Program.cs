@@ -6,36 +6,44 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Configuration;
+using System.Linq;
+
+/* in this repo */
+using dfbStartup;
 
 namespace cog_console
 {
 
     class Program
     {
+        public const string subscriptionkey_Emotion = "9928346999ea4d9da9d515279a94cd72";
+        public const string subscriptionkey_LanguageTranslation = "bcf4af4bfc5d480dbc458aa74c2dbd66";
 
         static void Main(string[] args)
         {
             //Console.WriteLine("Hello World!");
-            //TranslateList().Wait();
-            EmotionFromImage().Wait();
-        }
-
+            //EmotionFromImage().Wait();
+			//TranslateList().Wait();
+            JsonConfiguration.Init("azureKeys.json");
+            Console.WriteLine(JsonConfiguration.Config["emotion"]);
+		}
         private static async Task EmotionFromImage()
         {
-            string subscriptionKey = "SUBSCRIPTION_KEY";
+            
             string uri = "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize";
 
             var myAvatar = @"{'url': 'https://secure.gravatar.com/avatar/4f16f89a8a4f01a7525294cd8f1daa8e.jpg?s=512&r=g&d=mm'}";
             HttpContent contentPost = new StringContent(myAvatar, Encoding.UTF8, "application/json");
 
             var client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionkey_Emotion);
 
             //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
             var response = await client.PostAsync(uri, contentPost);
             var content = await response.Content.ReadAsStringAsync();
-            Console.Write(content);
+            Console.Write(content + "\n\r");
         }
         private static async Task TranslateList()
         {
@@ -43,7 +51,7 @@ namespace cog_console
             string uri = "https://api.microsofttranslator.com/v2/Http.svc/GetLanguagesForTranslate";
 
             var client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionkey_LanguageTranslation);
 
             //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 

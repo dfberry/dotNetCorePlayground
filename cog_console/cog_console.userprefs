@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{6AA31D1D-5ACE-4E83-A142-EE01F2243FCD}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="jsonConfigfile.cs">
+    <Files>
+      <File FileName="Program.cs" Line="1" Column="1" />
+      <File FileName="azureKeys.json" Line="3" Column="47" />
+      <File FileName="jsonConfigfile.cs" Line="11" Column="51" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.cog__console PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>
